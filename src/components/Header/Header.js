@@ -25,12 +25,30 @@ const Header = () => {
           <Logo />
         </Side>
         <DesktopNav>
-          <NavLink href="/sale">Sale</NavLink>
-          <NavLink href="/new">New&nbsp;Releases</NavLink>
-          <NavLink href="/men">Men</NavLink>
-          <NavLink href="/women">Women</NavLink>
-          <NavLink href="/kids">Kids</NavLink>
-          <NavLink href="/collections">Collections</NavLink>
+          <NavLink href="/sale">
+            <NormalLink>Sale</NormalLink>
+            <BoldLink aria-hidden="true">Sale</BoldLink>
+          </NavLink>
+          <NavLink href="/new">
+            <NormalLink>New&nbsp;Releases</NormalLink>
+            <BoldLink aria-hidden="true">New&nbsp;Releases</BoldLink>
+          </NavLink>
+          <NavLink href="/men">
+            <NormalLink>Men</NormalLink>
+            <BoldLink aria-hidden="true">Men</BoldLink>
+          </NavLink>
+          <NavLink href="/women">
+            <NormalLink>Women</NormalLink>
+            <BoldLink aria-hidden="true">Women</BoldLink>
+          </NavLink>
+          <NavLink href="/kids">
+            <NormalLink>Kids</NormalLink>
+            <BoldLink aria-hidden="true">Kids</BoldLink>
+          </NavLink>
+          <NavLink href="/collections">
+            <NormalLink>Collections</NormalLink>
+            <BoldLink aria-hidden="true">Collections</BoldLink>
+          </NavLink>
         </DesktopNav>
         <Side />{' '}
         <MobileActions>
@@ -111,9 +129,33 @@ const NavLink = styled.a`
   text-decoration: none;
   color: ${COLORS.gray[900]};
   font-weight: ${WEIGHTS.medium};
+  position: relative;
+  overflow: hidden;
 
   &:first-of-type {
     color: ${COLORS.secondary};
+  }
+`;
+
+const NormalLink = styled.span`
+  display: inline-block;
+  transition: transform 300ms;
+
+  ${NavLink}:hover & {
+    transform: translateY(-100%);
+  }
+`;
+
+const BoldLink = styled.span`
+  font-weight: ${WEIGHTS.bold};
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(100%);
+  transition: transform 300ms;
+
+  ${NavLink}:hover & {
+    transform: translateY(0);
   }
 `;
 

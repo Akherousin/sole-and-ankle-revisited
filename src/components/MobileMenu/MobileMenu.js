@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled, { keyframes } from 'styled-components/macro';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 
 import UnstyledButton from '../UnstyledButton';
@@ -43,6 +43,16 @@ const Overlay = styled(DialogOverlay)`
   background-color: ${COLORS.transparentGray[700]};
   display: flex;
   justify-content: flex-end;
+  animation: backdrop-fade-in 100ms;
+
+  @keyframes backdrop-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
 
 const Content = styled(DialogContent)`
@@ -54,6 +64,29 @@ const Content = styled(DialogContent)`
   flex-direction: column;
   justify-content: space-between;
   padding: 32px;
+  animation: drawer-slides-in 200ms cubic-bezier(0.09, 0.67, 0.61, 0.99);
+
+  @keyframes drawer-slides-in {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0%);
+    }
+  }
+
+  & > * {
+    animation: content-fades-in 1000ms;
+  }
+
+  @keyframes content-fades-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  } ;
 `;
 
 const CloseButton = styled(UnstyledButton)`
